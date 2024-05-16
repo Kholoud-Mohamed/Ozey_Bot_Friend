@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:mapfeature_project/helper/constants.dart';
 
 class QuoteScreen extends StatefulWidget {
   final List<String> selectedCategories;
@@ -15,6 +16,7 @@ class QuoteScreen extends StatefulWidget {
 class _QuoteScreenState extends State<QuoteScreen> {
   late Future<String> _quoteFuture;
   late String _currentQuote;
+  bool _isFavorite = false; // Track favorite status
 
   @override
   void initState() {
@@ -48,6 +50,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
   void _fetchAnotherQuote() {
     setState(() {
       _quoteFuture = fetchRandomQuote(widget.selectedCategories);
+      _isFavorite = false;
     });
   }
 
@@ -55,8 +58,17 @@ class _QuoteScreenState extends State<QuoteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quote'),
+        title: Text(
+          'Quote',
+          style: TextStyle(
+              fontFamily: AlegreyaFont,
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+              fontSize: 26),
+        ),
+        centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 102, 163, 176),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: FutureBuilder<String>(
@@ -126,10 +138,14 @@ class _QuoteScreenState extends State<QuoteScreen> {
                             onPressed: _fetchAnotherQuote,
                           ),
                           IconButton(
-                            icon: const Icon(Icons.favorite),
-                            onPressed: () {
-                              // Favorite functionality
-                            },
+                            icon: _isFavorite
+                                ? ImageIcon(
+                                    AssetImage(
+                                        'images/download-removebg-preview.png'),
+                                    color: Colors.red,
+                                  )
+                                : const Icon(Icons.favorite_border),
+                            onPressed: _toggleFavorite,
                           ),
                           const SizedBox(
                             width: 15,
@@ -149,5 +165,11 @@ class _QuoteScreenState extends State<QuoteScreen> {
         ),
       ),
     );
+  }
+
+  void _toggleFavorite() {
+    setState(() {
+      _isFavorite = !_isFavorite; // Toggle favorite status
+    });
   }
 }

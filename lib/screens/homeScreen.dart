@@ -79,7 +79,10 @@ class _HOMEScreenState extends State<HOMEScreen> {
             ifAbsent: () => [moodValue]);
       });
 
-      setState(() {});
+      if (mounted) {
+        // Check if the widget is still mounted before calling setState
+        setState(() {});
+      }
     } else {
       print('Failed to load mood data. Status code: ${response.statusCode}');
     }

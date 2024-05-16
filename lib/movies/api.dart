@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:mapfeature_project/movies/movieconst.dart';
 import 'moviesmodel.dart';
 
-// const apiKey = "e65d3d95be7d1f9a6e3c1e4dcc60cb57";
+const apiKey = "e65d3d95be7d1f9a6e3c1e4dcc60cb57";
 
 class Api {
   final upComingApiUrl =

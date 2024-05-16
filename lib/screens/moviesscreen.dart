@@ -42,13 +42,13 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   Widget _labelText(String labelText) {
     return Padding(
-      padding: const EdgeInsets.all(1.0),
+      padding: const EdgeInsets.only(left: 12.0),
       child: Text(
         labelText,
         style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 18.0,
-          fontFamily: 'Langar',
+          fontWeight: FontWeight.w900,
+          fontSize: 20.0,
+          fontFamily: AlegreyaFont,
           color: Color(0xff1F5D6B),
         ),
       ),
@@ -58,17 +58,17 @@ class _MoviesScreenState extends State<MoviesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 244, 242, 242),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(31, 255, 255, 255),
-        foregroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 244, 242, 242),
+        automaticallyImplyLeading: false,
         title: const Text(
           "Movies",
           style: TextStyle(
             fontSize: 25,
             fontFamily: AlegreyaFont,
             color: Color(0xff1F5D6B),
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w900,
           ),
         ),
         centerTitle: true,

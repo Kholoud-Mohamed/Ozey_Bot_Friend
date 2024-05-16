@@ -3,13 +3,36 @@ import 'package:mapfeature_project/helper/constants.dart';
 import 'package:mapfeature_project/screens/QuoteScreen.dart';
 
 class QuotesCategoryScreen extends StatelessWidget {
+  Widget _labelText(String labelText) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 7.0),
+      child: Text(
+        labelText,
+        style: const TextStyle(
+          fontWeight: FontWeight.w800,
+          fontSize: 18.0,
+          fontFamily: AlegreyaFont,
+          color: Color(0xff1F5D6B),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color.fromARGB(255, 244, 242, 242),
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 244, 242, 242),
+          automaticallyImplyLeading: false,
           title: const Text(
             'Categories',
-            style: TextStyle(fontFamily: 'langar'),
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 25.0,
+              fontFamily: AlegreyaFont,
+              color: Color(0xff1F5D6B),
+            ),
           ),
           centerTitle: true,
         ),
@@ -20,28 +43,15 @@ class QuotesCategoryScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'For You ',
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Langar'),
-                  ),
+                  child: _labelText('For You'),
                 ),
                 const SizedBox(height: 8),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      // CardWidget(
-                      //   image:
-                      //       'images/photo_2024-02-17_21-14-39-removebg-preview.png',
-                      //   text: 'My favourites',
-                      //   onTap: () {},
-                      // ),
-
                       CardWidget(
                         image:
                             'images/photo_2024-02-17_21-15-38-removebg-preview.png',
@@ -102,16 +112,10 @@ class QuotesCategoryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Improve your mindset',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Langar'),
-                  ),
+                const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: _labelText('Improve your mindset'),
                 ),
                 const SizedBox(height: 10),
                 SingleChildScrollView(
@@ -193,16 +197,10 @@ class QuotesCategoryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Take Care of Yourself',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Langar'),
-                  ),
+                const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: _labelText('Take Care of Yourself'),
                 ),
                 const SizedBox(height: 10),
                 SingleChildScrollView(
@@ -294,17 +292,10 @@ class QuotesCategoryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Stay Mentally Strong',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Langar'),
-                  ),
-                ),
+                const SizedBox(height: 25),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: _labelText('Stay Mentally Strong')),
                 const SizedBox(height: 10),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -385,17 +376,10 @@ class QuotesCategoryScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Breathe & Relax',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Langar'),
-                  ),
-                ),
+                const SizedBox(height: 25),
+                Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: _labelText('Breathe & Relax')),
                 const SizedBox(height: 10),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -493,18 +477,18 @@ class CardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        elevation: 5,
+        elevation: 3,
         margin: const EdgeInsets.symmetric(horizontal: 8),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: InkWell(
           // Use InkWell instead of GestureDetector for the ripple effect
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
           onTap: onTap,
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(
                 colors:
                     backgroundsoothe, // Replace with your desired gradient colors
