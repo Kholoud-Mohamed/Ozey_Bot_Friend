@@ -55,11 +55,11 @@ class _LogInScreenState extends State<LogInScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 SpinKitWave(
-                  color: Colors.blue, // Change color as needed
+                  color: primaryColor,
                   size: 50.0,
                 ),
-                SizedBox(height: 20),
-                Text('Validating Token...'),
+                const SizedBox(height: 20),
+                const Text('Validating Token...'),
               ],
             ),
           );
