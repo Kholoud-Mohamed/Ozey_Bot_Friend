@@ -58,7 +58,7 @@ class _QuoteScreenState extends State<QuoteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Quote',
           style: TextStyle(
               fontFamily: AlegreyaFont,

@@ -12,6 +12,7 @@ import 'package:mapfeature_project/widgets/customdivider.dart';
 import 'package:mapfeature_project/widgets/passwordfield.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LogInScreen extends StatefulWidget {
   final String? token;
@@ -38,12 +39,33 @@ class _LogInScreenState extends State<LogInScreen> {
 
     SharedPreferences.getInstance().then((prefs) {
       sharedPreferences = prefs;
+
       validateToken();
     });
   }
 
   Future<void> validateToken() async {
     try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SpinKitWave(
+                  color: Colors.blue, // Change color as needed
+                  size: 50.0,
+                ),
+                SizedBox(height: 20),
+                Text('Validating Token...'),
+              ],
+            ),
+          );
+        },
+      );
+
       String? token = getToken();
       if (token != null && token.isNotEmpty) {
         final response = await http.get(
@@ -56,6 +78,7 @@ class _LogInScreenState extends State<LogInScreen> {
         );
 
         if (response.statusCode == 200) {
+          Navigator.pop(context); // Dismiss the AlertDialog
           Map<String, dynamic> responseData = jsonDecode(response.body);
           String userId = responseData['id'].toString();
           String name = responseData['name'];
@@ -82,15 +105,18 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
             ),
           );
+
           return; // Exit  after navigation
         }
       }
-      // If token is invalid or not present, show the login screen
-      //  Navigator.pushReplacementNamed(context, 'login');
+      // If token is invalid or not present, dismiss AlertDialog and show the login screen
+      Navigator.pop(context); // Dismiss the AlertDialog
+      // Navigator.pushReplacementNamed(context, 'login');
     } catch (e) {
       print(e.toString());
-      // If token is invalid or not present, show the login screen
-      //  Navigator.pushReplacementNamed(context, 'login');
+      // If token is invalid or not present, dismiss AlertDialog and show the login screen
+      Navigator.pop(context); // Dismiss the AlertDialog
+      // Navigator.pushReplacementNamed(context, 'login');
     }
   }
 
