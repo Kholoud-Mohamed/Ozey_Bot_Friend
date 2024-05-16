@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mapfeature_project/Test/firstscreen.dart';
-// import 'package:mapfeature_project/helper/rememberMe.dart';
 import 'package:mapfeature_project/screens/OTP_Screen.dart';
 import 'package:mapfeature_project/screens/QuotesCategoryScreen.dart';
 import 'package:mapfeature_project/screens/activities.dart';
@@ -63,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         'sothee': (context) => const sotheeScreen(),
         'movies': (context) => MoviesScreen(), // Use MoviesScreen as a route
         'music': (context) => const musicScreen(),
-        // 'rememberMe': (context) => SplashScreen(),
+
         'recommendation': (context) => RecommendationsScreen(),
         'Todo': (context) => const HomePage(),
         'navigator': (context) => NavigationTabs(

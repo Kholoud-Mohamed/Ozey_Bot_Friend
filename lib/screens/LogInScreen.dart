@@ -47,19 +47,40 @@ class _LogInScreenState extends State<LogInScreen> {
   Future<void> validateToken() async {
     try {
       showDialog(
+        // barrierColor: Colors.white,
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
           return AlertDialog(
+            backgroundColor: Colors.white,
+            surfaceTintColor: Colors.white,
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                const SizedBox(
+                  height: 30,
+                ),
+                Image.asset('images/photo_2024-05-16_19-12-57.jpg'),
+                const SizedBox(
+                  height: 25,
+                ),
                 SpinKitWave(
                   color: primaryColor,
                   size: 50.0,
                 ),
                 const SizedBox(height: 20),
-                const Text('Validating Token...'),
+                const Text(
+                  'Validating Token...',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 20.0,
+                    fontFamily: AlegreyaFont,
+                    color: Color(0xff1F5D6B),
+                  ),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
               ],
             ),
           );
